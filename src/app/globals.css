@@ -576,7 +576,7 @@ p {
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1140px) {
   html {
     scroll-padding-top: 78px;
   }
@@ -628,7 +628,9 @@ p {
   .navToggle[aria-expanded="true"] span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
+}
 
+@media (max-width: 860px) {
   .split,
   .footerGrid {
     grid-template-columns: 1fr;
@@ -888,6 +890,231 @@ p {
   .waButton {
     width: 54px;
     height: 54px;
+  }
+}
+
+.btnOutline {
+  border: 2px solid var(--green-700);
+  background: #fff;
+  color: var(--green-700);
+}
+
+.btnOutline:hover {
+  background: var(--green-700);
+  color: #fff;
+}
+
+.steps {
+  display: grid;
+  gap: 18px;
+  margin-top: 38px;
+}
+
+.step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+
+.stepNum {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--green-700);
+  color: #fff;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+
+.step h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.step p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 36px;
+}
+
+.faqItem {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px 26px;
+}
+
+.faqItem h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.faqItem p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+.contactSplit {
+  align-items: start;
+  margin-top: 34px;
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0 0;
+  display: grid;
+  gap: 14px;
+  font-size: 0.98rem;
+}
+
+.contactList li {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.contactList b {
+  flex: none;
+  min-width: 84px;
+  color: var(--ink);
+}
+
+.contactList span {
+  color: var(--muted);
+}
+
+.contactList a {
+  color: var(--green-700);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contactList a:hover {
+  text-decoration: underline;
+}
+
+.contactForm {
+  margin: 0;
+}
+
+.formCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  box-shadow: var(--shadow);
+}
+
+.contactForm .field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.contactForm label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.optional {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.contactForm input,
+.contactForm textarea {
+  font: inherit;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(31, 138, 84, 0.22);
+}
+
+.contactForm textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.formSubmit {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.formSubmit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.formStatus {
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.94rem;
+  margin-bottom: 16px;
+}
+
+.formStatusOk {
+  background: rgba(31, 138, 84, 0.12);
+  color: var(--green-900);
+}
+
+.formStatusErr {
+  background: rgba(153, 27, 27, 0.1);
+  color: #7f1d1d;
+}
+
+.formAlt {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 14px 0 0;
+}
+
+.formAlt a {
+  color: var(--green-700);
+  font-weight: 700;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .faqGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactList b {
+    min-width: 76px;
   }
 }
 

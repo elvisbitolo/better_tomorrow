@@ -8,6 +8,11 @@ const SITE_URL = (
   'https://better-tomorrow-school.netlify.app'
 ).replace(/\/$/, '')
 
+if (process.env.INDEXNOW_SKIP === '1') {
+  console.log('[indexnow] skipped (INDEXNOW_SKIP=1)')
+  process.exit(0)
+}
+
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const publicDir = join(root, 'public')
 

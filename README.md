@@ -24,12 +24,15 @@ Volunteer placements are arranged through its partner organisations: [CIVS Kenya
 
 ## The website
 
-A single-page marketing site: hero → key numbers → about → the four programs → photo gallery → get involved → contact footer.
+A single-page marketing site: hero → key numbers → about → the four programs → photo gallery → admissions → FAQ → get involved → contact.
 
 - Fully static, no CMS, no backend, no database
-- SEO: title/description, Open Graph tags and `EducationalOrganization` JSON-LD
+- SEO: title/description, Open Graph tags, `EducationalOrganization` + `FAQPage` JSON-LD
 - Logo doubles as the favicon
-- Responsive at 940px and 640px breakpoints
+- Netlify Forms contact form (honeypot + AJAX submit via `data-netlify="true"`)
+- Responsive: hamburger nav ≤1140px (seven links no longer fit in one row), layouts stack at 860px, tighter at 640px and 380px
+- Security headers (`nosniff`, `SAMEORIGIN`, referrer/permissions policy) in `netlify.toml`
+- GitHub Actions CI (`.github/workflows/ci.yml`): `npm ci` → lint → build on every push
 
 ## Tech stack
 
@@ -40,9 +43,9 @@ A single-page marketing site: hero → key numbers → about → the four progra
 | Language | JavaScript (`src/`), ESLint via `eslint-config-next` |
 | Styling | Plain CSS — design tokens and component classes in `src/app/globals.css` (no Tailwind, no CSS-in-JS) |
 | Routing | One route: `src/app/page.js` (root layout in `src/app/layout.js`) |
-| Images | `next/image` with `images.unoptimized: true`; originals in `public/photos/` |
+| Images | `next/image` with `images.unoptimized: true`; WebP photos in `public/photos/` (`npm run images` to add more) |
 | Build output | Static export (`output: 'export'`) → `out/` |
-| Hosting | Netlify static publish, configured in `netlify.toml` (Node 22, cache headers) |
+| Hosting | Netlify static publish, configured in `netlify.toml` (Node 22, cache + security headers) |
 
 Because the build is a static export there is no server: `next start` and SSR/server-only features are unavailable, and `next build` writes a plain HTML/CSS/JS site to `out/`.
 
@@ -58,6 +61,7 @@ npm run dev      # http://localhost:3000
 ```bash
 npm run build    # static export into out/
 npm run lint     # eslint
+npm run images   # convert public/photos/*.jpg to WebP (see "Photos and credits")
 ```
 
 ## Project structure
@@ -71,14 +75,18 @@ src/app/
   sitemap.js     # sitemap.xml
   favicon.ico    # logo as favicon (16/32/48) + icon.png + apple-icon.png
 src/lib/
-  site.js        # site URL, WhatsApp number, shared links
+  site.js        # site URL, WhatsApp number, email, shared links
 src/components/
-  SiteNav.js     # responsive header with hamburger menu
+  SiteNav.js     # responsive header with hamburger menu (collapses ≤1140px)
   WhatsAppWidget.js  # floating WhatsApp chat button
+  ContactForm.js # Netlify Forms contact form with inline success state
 scripts/
   indexnow.mjs   # pings Bing/Yandex with the site URL after each build
+  compress-images.mjs  # JPEG/PNG → WebP for public/photos
+.github/workflows/
+  ci.yml         # lint + build on push/PR (IndexNow ping skipped)
 public/
-  photos/        # hero-school.jpg, school-01..18.jpg, logo.jpeg (favicon source)
+  photos/        # hero-school.webp, school-01..18.webp, og-cover.jpg, logo.jpeg (favicon source)
   <key>.txt      # IndexNow verification key (do not rename or delete)
 netlify.toml     # build command, publish dir, cache headers
 next.config.mjs  # output: 'export', images.unoptimized
@@ -131,15 +139,21 @@ All images are in `public/photos/`:
 
 | Source | Files |
 |---|---|
-| The school (photos received via WhatsApp on 2026-10-08) | `school-01.jpg` … `school-18.jpg` (gallery) |
-| The school — hero photo | `hero-school.jpg` |
+| The school (photos received via WhatsApp on 2026-10-08) | `school-01.webp` … `school-18.webp` (gallery) |
+| The school — hero photo | `hero-school.webp` |
 | School logo | `logo.jpeg` (favicon source) |
 
-The 19 school photographs arrived as one WhatsApp zip (`WhatsApp Image 2026-10-08 at 10.31.06.zip`); `hero-school.jpg` is the 13th image in filename order, the other 18 fill the gallery. Earlier partner/volunteer photos (HeyLocals, CIVS, volunteering.at, YouTube stills) were removed from `public/photos/` when these replaced them.
+The 19 school photographs arrived as one WhatsApp zip (`WhatsApp Image 2026-10-08 at 10.31.06.zip`); `hero-school.webp` is the 13th image in filename order, the other 18 fill the gallery. Earlier partner/volunteer photos (HeyLocals, CIVS, volunteering.at, YouTube stills) were removed from `public/photos/` when these replaced them.
+
+Photos are re-encodable with `npm run images` (`scripts/compress-images.mjs`, needs `sharp`): converts `public/photos/*.jpg|png` to WebP at quality 78, caps gallery photos at a 1200px long edge (hero 1600px), and regenerates `og-cover.jpg` (1200×630, top-cropped) for social previews. That pass took the folder from 3.75 MB to ~2.0 MB. Keep `logo.jpeg` untouched — the app icons are generated from it. Social crawlers don't reliably render WebP, so Open Graph/Twitter previews always point at `og-cover.jpg`.
 
 ## Open items
 
 - Contact channels: email `bettertomorrowschool22@gmail.com`, WhatsApp (`+254 113 053 129`) and Facebook — no phone call line published
 - Pupil numbers conflict across sources (290 in one CIVS listing, 350 elsewhere); the site says 350
 - `sitemap.js` hard-codes `lastModified: '2026-10-08'`; bump it when the page content changes
-- `public/photos` is ~3.9 MB (19 school JPEGs at 1600px); `sharp` is installed if you want to downscale and recompress
+- `public/photos` is ~2.3 MB (19 WebP photos + `og-cover.jpg` + `logo.jpeg`); run `npm run images` after adding new JPEGs
+- Gallery alt text is generic ("photo 1…18") — needs someone who can see the photos to describe them
+- No analytics yet — pick a provider (GA4, Cloudflare Web Analytics or Umami) before launch
+- Google Business Profile for the school is not created yet (needs the school's Google account) — that's what drives the Maps pack
+- Contact form posts to Netlify Forms (free tier, 100 submissions/month): turn on form notifications in the Netlify dashboard so submissions are emailed to the school

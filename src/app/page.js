@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import ContactForm from '../components/ContactForm'
+import { EMAIL, WHATSAPP_DISPLAY, whatsAppLink } from '../lib/site'
 
 const stats = [
   { value: '2019', label: 'Year founded' },
@@ -53,24 +55,24 @@ const programs = [
 ]
 
 const gallery = [
-  { src: '/photos/school-01.jpg', alt: 'Better Tomorrow School, Nairobi — photo 1' },
-  { src: '/photos/school-02.jpg', alt: 'Better Tomorrow School, Nairobi — photo 2' },
-  { src: '/photos/school-03.jpg', alt: 'Better Tomorrow School, Nairobi — photo 3' },
-  { src: '/photos/school-04.jpg', alt: 'Better Tomorrow School, Nairobi — photo 4' },
-  { src: '/photos/school-05.jpg', alt: 'Better Tomorrow School, Nairobi — photo 5' },
-  { src: '/photos/school-06.jpg', alt: 'Better Tomorrow School, Nairobi — photo 6' },
-  { src: '/photos/school-07.jpg', alt: 'Better Tomorrow School, Nairobi — photo 7' },
-  { src: '/photos/school-08.jpg', alt: 'Better Tomorrow School, Nairobi — photo 8' },
-  { src: '/photos/school-09.jpg', alt: 'Better Tomorrow School, Nairobi — photo 9' },
-  { src: '/photos/school-10.jpg', alt: 'Better Tomorrow School, Nairobi — photo 10' },
-  { src: '/photos/school-11.jpg', alt: 'Better Tomorrow School, Nairobi — photo 11' },
-  { src: '/photos/school-12.jpg', alt: 'Better Tomorrow School, Nairobi — photo 12' },
-  { src: '/photos/school-13.jpg', alt: 'Better Tomorrow School, Nairobi — photo 13' },
-  { src: '/photos/school-14.jpg', alt: 'Better Tomorrow School, Nairobi — photo 14' },
-  { src: '/photos/school-15.jpg', alt: 'Better Tomorrow School, Nairobi — photo 15' },
-  { src: '/photos/school-16.jpg', alt: 'Better Tomorrow School, Nairobi — photo 16' },
-  { src: '/photos/school-17.jpg', alt: 'Better Tomorrow School, Nairobi — photo 17' },
-  { src: '/photos/school-18.jpg', alt: 'Better Tomorrow School, Nairobi — photo 18' },
+  { src: '/photos/school-01.webp', alt: 'Better Tomorrow School, Nairobi — photo 1' },
+  { src: '/photos/school-02.webp', alt: 'Better Tomorrow School, Nairobi — photo 2' },
+  { src: '/photos/school-03.webp', alt: 'Better Tomorrow School, Nairobi — photo 3' },
+  { src: '/photos/school-04.webp', alt: 'Better Tomorrow School, Nairobi — photo 4' },
+  { src: '/photos/school-05.webp', alt: 'Better Tomorrow School, Nairobi — photo 5' },
+  { src: '/photos/school-06.webp', alt: 'Better Tomorrow School, Nairobi — photo 6' },
+  { src: '/photos/school-07.webp', alt: 'Better Tomorrow School, Nairobi — photo 7' },
+  { src: '/photos/school-08.webp', alt: 'Better Tomorrow School, Nairobi — photo 8' },
+  { src: '/photos/school-09.webp', alt: 'Better Tomorrow School, Nairobi — photo 9' },
+  { src: '/photos/school-10.webp', alt: 'Better Tomorrow School, Nairobi — photo 10' },
+  { src: '/photos/school-11.webp', alt: 'Better Tomorrow School, Nairobi — photo 11' },
+  { src: '/photos/school-12.webp', alt: 'Better Tomorrow School, Nairobi — photo 12' },
+  { src: '/photos/school-13.webp', alt: 'Better Tomorrow School, Nairobi — photo 13' },
+  { src: '/photos/school-14.webp', alt: 'Better Tomorrow School, Nairobi — photo 14' },
+  { src: '/photos/school-15.webp', alt: 'Better Tomorrow School, Nairobi — photo 15' },
+  { src: '/photos/school-16.webp', alt: 'Better Tomorrow School, Nairobi — photo 16' },
+  { src: '/photos/school-17.webp', alt: 'Better Tomorrow School, Nairobi — photo 17' },
+  { src: '/photos/school-18.webp', alt: 'Better Tomorrow School, Nairobi — photo 18' },
 ]
 
 const involve = [
@@ -94,13 +96,68 @@ const involve = [
   },
 ]
 
+const admissionSteps = [
+  {
+    title: 'Get in touch',
+    body: 'Send a WhatsApp message, an email or use the form below. Tell us your child’s age and the grade you have in mind.',
+  },
+  {
+    title: 'Visit the school',
+    body: 'Come and see the classrooms in Vumilia, meet the teachers and ask everything you want to ask before deciding.',
+  },
+  {
+    title: 'Agree the plan',
+    body: 'We confirm the right grade placement and go through the termly contributions so there are no surprises.',
+  },
+]
+
+const faqs = [
+  {
+    q: 'Where is the school?',
+    a: 'Vumilia Slum, Donholm, Embakasi East, Nairobi County, Kenya — a short walk from Donholm.',
+  },
+  {
+    q: 'Which grades do you teach?',
+    a: 'Playgroup through Grade 8, following the full curriculum. Children join from around age 3.',
+  },
+  {
+    q: 'How many children attend?',
+    a: 'Around 350 pupils, taught by 13 staff members including 10 teachers.',
+  },
+  {
+    q: 'What does a school day include?',
+    a: 'Lessons as well as a regular meal for the children, pastoral care and guiding, and community clean-up drives.',
+  },
+  {
+    q: 'How much are the fees?',
+    a: 'Contributions are termly and depend on the grade, so we share the current figures when you contact us.',
+  },
+  {
+    q: 'How do I admit my child?',
+    a: 'Message us on WhatsApp or email the school — we will walk you through placement and what to bring.',
+  },
+]
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+}
+
 export default function Home() {
   return (
     <>
       <section className="hero">
         <div className="heroMedia">
           <Image
-            src="/photos/hero-school.jpg"
+            src="/photos/hero-school.webp"
             alt="Better Tomorrow School, Donholm, Nairobi"
             fill
             priority
@@ -160,7 +217,7 @@ export default function Home() {
             </div>
             <figure className="figure" style={{ margin: 0 }}>
               <Image
-                src="/photos/school-01.jpg"
+                src="/photos/school-01.webp"
                 alt="Pupils of Better Tomorrow School"
                 fill
                 sizes="(max-width: 940px) 100vw, 40vw"
@@ -220,6 +277,67 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section sectionAlt" id="admissions">
+        <div className="container">
+          <span className="eyebrow">Joining the school</span>
+          <h2>How to enrol your child</h2>
+          <p className="lead">
+            Enrolment starts with a conversation. Grade placement and termly
+            contributions depend on your child’s age, so talk to us first and
+            we will walk you through everything step by step.
+          </p>
+          <div className="steps">
+            {admissionSteps.map((step, index) => (
+              <div className="step" key={step.title}>
+                <span className="stepNum">{index + 1}</span>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="actions">
+            <a
+              className="btn btnSolid"
+              href={whatsAppLink(
+                'Hello Better Tomorrow School! I would like to ask about admitting my child.'
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ask on WhatsApp
+            </a>
+            <a className="btn btnOutline" href="#contact">
+              Send a message
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="faq">
+        <div className="container">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          />
+          <span className="eyebrow">Questions</span>
+          <h2>What parents ask us</h2>
+          <p className="lead">
+            The short answers to what people ask most often — and anything
+            else, just message us.
+          </p>
+          <div className="faqGrid">
+            {faqs.map((faq) => (
+              <div className="faqItem" key={faq.q}>
+                <h3>{faq.q}</h3>
+                <p>{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section sectionAlt" id="involved">
         <div className="container">
           <span className="eyebrow">Get involved</span>
@@ -236,6 +354,56 @@ export default function Home() {
                 <a href={item.href}>{item.action} →</a>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+      <section className="section" id="contact">
+        <div className="container">
+          <span className="eyebrow">Contact</span>
+          <h2>Talk to us</h2>
+          <div className="split contactSplit">
+            <div>
+              <p className="lead">
+                Questions about admissions, volunteering or supporting the
+                school? Reach us any way that suits you — we answer messages
+                as fast as we can.
+              </p>
+              <ul className="contactList">
+                <li>
+                  <b>Visit</b>
+                  <span>
+                    Vumilia Slum, Donholm, Embakasi East
+                    <br />
+                    Nairobi County, Kenya
+                  </span>
+                </li>
+                <li>
+                  <b>WhatsApp</b>
+                  <a
+                    href={whatsAppLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {WHATSAPP_DISPLAY}
+                  </a>
+                </li>
+                <li>
+                  <b>Email</b>
+                  <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+                </li>
+                <li>
+                  <b>Facebook</b>
+                  <a
+                    href="https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Better Tomorrow School
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <ContactForm />
           </div>
         </div>
       </section>

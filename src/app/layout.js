@@ -35,7 +35,14 @@ export const metadata = {
       'Founded in 2019 in Vumilia Slum, Donholm. Around 350 children, playgroup to Grade 8.',
     url: '/',
     siteName: 'Better Tomorrow School',
-    images: ['/photos/hero-school.jpg'],
+    images: [
+      {
+        url: '/photos/og-cover.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Better Tomorrow School pupils, Donholm, Nairobi',
+      },
+    ],
     locale: 'en_KE',
     type: 'website',
   },
@@ -44,7 +51,7 @@ export const metadata = {
     title: 'Better Tomorrow School — Donholm, Nairobi',
     description:
       'Founded in 2019 in Vumilia Slum, Donholm. Around 350 children, playgroup to Grade 8.',
-    images: ['/photos/hero-school.jpg'],
+    images: ['/photos/og-cover.jpg'],
   },
 }
 
@@ -81,6 +88,8 @@ const links = [
   { href: '#about', label: 'About' },
   { href: '#programs', label: 'Programs' },
   { href: '#gallery', label: 'Photos' },
+  { href: '#admissions', label: 'Admissions' },
+  { href: '#faq', label: 'FAQ' },
   { href: '#involved', label: 'Get involved' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -100,7 +109,7 @@ export default function RootLayout({ children }) {
 
         <main id="top">{children}</main>
 
-        <footer className="siteFooter" id="contact">
+        <footer className="siteFooter">
           <div className="container">
             <div className="footerGrid">
               <div>
