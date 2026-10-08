@@ -139,7 +139,7 @@ The 19 school photographs arrived as one WhatsApp zip (`WhatsApp Image 2026-10-0
 
 ## Open items
 
-- Contact is WhatsApp (`+254 113 053 129` via the floating widget and footer) and Facebook — no email address published yet
+- Contact channels: email `bettertomorrowschool22@gmail.com`, WhatsApp (`+254 113 053 129`) and Facebook — no phone call line published
 - Pupil numbers conflict across sources (290 in one CIVS listing, 350 elsewhere); the site says 350
 - `sitemap.js` hard-codes `lastModified: '2026-10-08'`; bump it when the page content changes
 - `public/photos` is ~3.9 MB (19 school JPEGs at 1600px); `sharp` is installed if you want to downscale and recompress

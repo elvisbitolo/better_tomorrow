@@ -2,6 +2,7 @@ import './globals.css'
 import SiteNav from '../components/SiteNav'
 import WhatsAppWidget from '../components/WhatsAppWidget'
 import {
+  EMAIL,
   SITE_URL,
   WHATSAPP_DISPLAY,
   WHATSAPP_NUMBER,
@@ -57,6 +58,7 @@ const jsonLd = {
   description:
     'Community school in Vumilia Slum, Donholm, Embakasi East, Nairobi County, Kenya, serving children from playgroup to Grade 8.',
   telephone: `+${WHATSAPP_NUMBER}`,
+  email: EMAIL,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Vumilia Slum, Donholm, Embakasi East',
@@ -66,6 +68,7 @@ const jsonLd = {
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: `+${WHATSAPP_NUMBER}`,
+    email: EMAIL,
     contactType: 'customer service',
     availableLanguage: ['English', 'Swahili'],
   },
@@ -134,6 +137,9 @@ export default function RootLayout({ children }) {
                     >
                       WhatsApp {WHATSAPP_DISPLAY}
                     </a>
+                  </li>
+                  <li>
+                    <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
                   </li>
                   <li>
                     <a href={facebookUrl}>Facebook page</a>

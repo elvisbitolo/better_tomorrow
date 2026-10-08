@@ -1,5 +1,7 @@
 export const SITE_URL = 'https://better-tomorrow-school.netlify.app'
 
+export const EMAIL = 'bettertomorrowschool22@gmail.com'
+
 export const WHATSAPP_NUMBER = '254113053129'
 
 export const WHATSAPP_DISPLAY = '+254 113 053 129'
