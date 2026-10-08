@@ -69,13 +69,17 @@ src/app/
   globals.css    # design tokens + all component styles
   robots.js      # robots.txt (allow all + sitemap URL)
   sitemap.js     # sitemap.xml
+  favicon.ico    # logo as favicon (16/32/48) + icon.png + apple-icon.png
 src/lib/
   site.js        # site URL, WhatsApp number, shared links
 src/components/
   SiteNav.js     # responsive header with hamburger menu
   WhatsAppWidget.js  # floating WhatsApp chat button
+scripts/
+  indexnow.mjs   # pings Bing/Yandex with the site URL after each build
 public/
-  photos/        # 19 photographs including logo.jpeg (favicon)
+  photos/        # 19 photographs including logo.jpeg (favicon source)
+  <key>.txt      # IndexNow verification key (do not rename or delete)
 netlify.toml     # build command, publish dir, cache headers
 next.config.mjs  # output: 'export', images.unoptimized
 README.md
@@ -107,10 +111,19 @@ All SEO URLs come from one constant: `SITE_URL` in `src/lib/site.js` (currently 
 | `sitemap.xml` | `src/app/sitemap.js` → `out/sitemap.xml` |
 | `robots.txt` | `src/app/robots.js` → `out/robots.txt` (allows all, points at sitemap) |
 | Google verification | `verification.google` in `src/app/layout.js` |
+| Favicon + app icons | `src/app/favicon.ico`, `icon.png`, `apple-icon.png` (generated from `public/photos/logo.jpeg`) |
 | Structured data | `EducationalOrganization` JSON-LD in `src/app/layout.js` |
 | Open Graph + Twitter cards | `openGraph` / `twitter` metadata |
+| IndexNow (Bing/Yandex) | `public/<key>.txt` + `scripts/indexnow.mjs`, pinged by `postbuild` |
 
 To verify in Search Console: add the property as **URL prefix** `https://better-tomorrow-school.netlify.app`, then either re-check the HTML tag (it is already in the page `<head>`) or use DNS. After that, submit `https://better-tomorrow-school.netlify.app/sitemap.xml`.
+
+### Bing / IndexNow
+
+1. Open [bing.com/webmasters](https://www.bing.com/webmasters) → **Add site** → easiest is **Import from Google Search Console** (auto-verifies, no extra tag needed). Manual alternatives: an `msvalidate.01` meta tag or a `CNAME` DNS record.
+2. Submit `https://better-tomorrow-school.netlify.app/sitemap.xml` under **Sitemaps**.
+3. Every build now pings IndexNow (`postbuild` → `scripts/indexnow.mjs`), which tells Bing the URL changed; it returned `202 Accepted` when last run. Run it manually with `npm run indexnow`.
+4. If URL Inspection reports **Blocked** while robots.txt allows all and the page returns 200 to `bingbot`, Bing has not finished evaluating it yet — use **Request indexing** on that URL and re-check in a few days.
 
 ## Photos and credits
 

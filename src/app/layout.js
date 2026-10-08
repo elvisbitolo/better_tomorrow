@@ -28,7 +28,6 @@ export const metadata = {
   verification: {
     google: 'Nhs8gc3RwgRKBibskar-5rweTZL0n2-W_XgqLUAtpXk',
   },
-  icons: { icon: '/photos/logo.jpeg' },
   openGraph: {
     title: 'Better Tomorrow School — Donholm, Nairobi',
     description:
