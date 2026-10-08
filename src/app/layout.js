@@ -1,17 +1,50 @@
 import './globals.css'
 import SiteNav from '../components/SiteNav'
+import WhatsAppWidget from '../components/WhatsAppWidget'
+import {
+  SITE_URL,
+  WHATSAPP_DISPLAY,
+  WHATSAPP_NUMBER,
+  whatsAppLink,
+} from '../lib/site'
 
 export const metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Better Tomorrow School — Donholm, Nairobi',
   description:
     'A community school in Vumilia Slum, Donholm, Embakasi East, Nairobi. Founded in 2019, we teach around 350 children from playgroup to Grade 6.',
+  keywords: [
+    'Better Tomorrow School',
+    'school in Donholm',
+    'Nairobi primary school',
+    'Vumilia Slum school',
+    'Embakasi East school',
+    'community school Nairobi',
+    'school feeding programme Kenya',
+  ],
+  alternates: {
+    canonical: '/',
+  },
+  verification: {
+    google: 'Nhs8gc3RwgRKBibskar-5rweTZL0n2-W_XgqLUAtpXk',
+  },
   icons: { icon: '/photos/logo.jpeg' },
   openGraph: {
     title: 'Better Tomorrow School — Donholm, Nairobi',
     description:
       'Founded in 2019 in Vumilia Slum, Donholm. Around 350 children, playgroup to Grade 6.',
+    url: '/',
+    siteName: 'Better Tomorrow School',
     images: ['/photos/heylocals-background_hero.jpg'],
+    locale: 'en_KE',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Better Tomorrow School — Donholm, Nairobi',
+    description:
+      'Founded in 2019 in Vumilia Slum, Donholm. Around 350 children, playgroup to Grade 6.',
+    images: ['/photos/heylocals-background_hero.jpg'],
   },
 }
 
@@ -19,14 +52,23 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
   name: 'Better Tomorrow School',
+  url: SITE_URL,
+  logo: `${SITE_URL}/photos/logo.jpeg`,
   foundingDate: '2019',
   description:
     'Community school in Vumilia Slum, Donholm, Embakasi East, Nairobi County, Kenya, serving children from playgroup to Grade 6.',
+  telephone: `+${WHATSAPP_NUMBER}`,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Vumilia Slum, Donholm, Embakasi East',
     addressLocality: 'Nairobi',
     addressCountry: 'KE',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: `+${WHATSAPP_NUMBER}`,
+    contactType: 'customer service',
+    availableLanguage: ['English', 'Swahili'],
   },
   sameAs: [
     'https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/',
@@ -86,6 +128,15 @@ export default function RootLayout({ children }) {
                 <h3>Reach us</h3>
                 <ul className="footerLinks">
                   <li>
+                    <a
+                      href={whatsAppLink()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      WhatsApp {WHATSAPP_DISPLAY}
+                    </a>
+                  </li>
+                  <li>
                     <a href={facebookUrl}>Facebook page</a>
                   </li>
                   <li>
@@ -107,6 +158,8 @@ export default function RootLayout({ children }) {
             </div>
           </div>
         </footer>
+
+        <WhatsAppWidget />
       </body>
     </html>
   )

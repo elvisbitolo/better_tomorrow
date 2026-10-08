@@ -761,3 +761,143 @@ p {
     grid-row: auto;
   }
 }
+
+.waWidget {
+  position: fixed;
+  right: 20px;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.waButton {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 14px 30px -12px rgba(9, 50, 28, 0.7);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.waButton:hover {
+  background: #1ebe5b;
+  transform: translateY(-2px);
+}
+
+.waButton:focus-visible,
+.btn:focus-visible,
+.nav a:focus-visible,
+.navToggle:focus-visible,
+.involveCard a:focus-visible {
+  outline: 3px solid var(--amber-500);
+  outline-offset: 2px;
+}
+
+.waCard {
+  display: none;
+  width: min(300px, calc(100vw - 36px));
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 26px 54px -22px rgba(13, 59, 42, 0.6);
+}
+
+.waCardOpen {
+  display: block;
+}
+
+.waCardHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.waAvatar {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+
+.waCardTitle {
+  font-weight: 800;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.waCardTitle span {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.waCardBody {
+  font-size: 0.92rem;
+  color: var(--muted);
+  background: var(--sand);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.waCardBtn {
+  display: block;
+  text-align: center;
+  background: #25d366;
+  color: #062915;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 11px 16px;
+  margin-top: 4px;
+}
+
+.waCardBtn:hover {
+  background: #1ebe5b;
+  color: #062915;
+}
+
+.waCardFoot {
+  display: block;
+  text-align: center;
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .waWidget {
+    right: 14px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+  }
+
+  .waButton {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .waButton,
+  .btn {
+    transition: none;
+  }
+}

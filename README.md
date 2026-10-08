@@ -67,6 +67,13 @@ src/app/
   layout.js      # root layout: header/nav, footer, metadata, JSON-LD
   page.js        # the full single page
   globals.css    # design tokens + all component styles
+  robots.js      # robots.txt (allow all + sitemap URL)
+  sitemap.js     # sitemap.xml
+src/lib/
+  site.js        # site URL, WhatsApp number, shared links
+src/components/
+  SiteNav.js     # responsive header with hamburger menu
+  WhatsAppWidget.js  # floating WhatsApp chat button
 public/
   photos/        # 19 photographs including logo.jpeg (favicon)
 netlify.toml     # build command, publish dir, cache headers
@@ -89,6 +96,22 @@ The site name sets the domain: `better-tomorrow-school.netlify.app`.
 
 If the deploy 404s after a successful build, Netlify's Next.js Runtime is fighting the static export — turn it off under **Site settings → Build & deploy → Enable Next.js runtime**. Drag-and-drop of the `out/` folder also works, but skips the cache headers in `netlify.toml`.
 
+## SEO and Google Search Console
+
+All SEO URLs come from one constant: `SITE_URL` in `src/lib/site.js` (currently `https://better-tomorrow-school.netlify.app`). If the site name or domain changes, edit that file and rebuild.
+
+| Item | Where |
+|---|---|
+| Canonical URL | `alternates.canonical` in `src/app/layout.js` |
+| `metadataBase` | `src/app/layout.js` — absolute URLs for OG/Twitter images |
+| `sitemap.xml` | `src/app/sitemap.js` → `out/sitemap.xml` |
+| `robots.txt` | `src/app/robots.js` → `out/robots.txt` (allows all, points at sitemap) |
+| Google verification | `verification.google` in `src/app/layout.js` |
+| Structured data | `EducationalOrganization` JSON-LD in `src/app/layout.js` |
+| Open Graph + Twitter cards | `openGraph` / `twitter` metadata |
+
+To verify in Search Console: add the property as **URL prefix** `https://better-tomorrow-school.netlify.app`, then either re-check the HTML tag (it is already in the page `<head>`) or use DNS. After that, submit `https://better-tomorrow-school.netlify.app/sitemap.xml`.
+
 ## Photos and credits
 
 All images are in `public/photos/`:
@@ -105,7 +128,7 @@ Credits appear in the footer. **Confirm usage rights before going live** — the
 
 ## Open items
 
-- No phone or email is published yet — contact routes to the Facebook page
+- Contact is WhatsApp (`+254 725 839 099` via the floating widget and footer) and Facebook — no email address published yet
 - Pupil numbers conflict across sources (290 in one CIVS listing, 350 elsewhere); the site says 350
-- `metadataBase` is unset in `src/app/layout.js`, so Open Graph images resolve to `localhost` until a production domain is added
+- `sitemap.js` hard-codes `lastModified: '2026-10-08'`; bump it when the page content changes
 - `public/photos` is ~5.4 MB; `sharp` is already installed if you want to downscale and recompress
