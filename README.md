@@ -8,14 +8,14 @@ Website for **Better Tomorrow School** — a community school serving children i
 |---|---|
 | **Founded** | 2019 |
 | **Location** | Vumilia Slum, Donholm, Embakasi East, Nairobi County, Kenya |
-| **Ages / grades** | 3–15 years · Playgroup through Grade 6 |
+| **Ages / grades** | 3–15 years · Playgroup through Grade 8 |
 | **Roll** | Around 350 pupils |
 | **Staff** | 13 (4 men, 9 women), including 10 teachers |
 | **Funding** | The founder, friends of the school and small termly contributions from parents |
 
 The school exists so that children in the settlement can learn in a safe place, on a full stomach, with adults who know them by name. Its four standing programs are:
 
-- **Quality education** — the full curriculum from playgroup to Grade 6
+- **Quality education** — the full curriculum from playgroup to Grade 8
 - **Feeding programme** — regular meals, often the reason a child stays in class
 - **Guiding & counselling** — pastoral care and mentoring
 - **Community clean-ups** — clean-up and health drives across the neighbourhood
@@ -78,7 +78,7 @@ src/components/
 scripts/
   indexnow.mjs   # pings Bing/Yandex with the site URL after each build
 public/
-  photos/        # 19 photographs including logo.jpeg (favicon source)
+  photos/        # hero-school.jpg, school-01..18.jpg, logo.jpeg (favicon source)
   <key>.txt      # IndexNow verification key (do not rename or delete)
 netlify.toml     # build command, publish dir, cache headers
 next.config.mjs  # output: 'export', images.unoptimized
@@ -131,17 +131,15 @@ All images are in `public/photos/`:
 
 | Source | Files |
 |---|---|
-| HeyLocals — "Childcare in Nairobi" project page | `heylocals-*` |
-| CIVS Kenya project page | `civs-better-tomorrow.jpg` |
-| volunteering.at (Grenzenlos) | `volunteering-at-*.jpg` |
-| YouTube — headmaster speech, morning devotion | `youtube-*-maxresdefault.jpg` |
-| School logo | `logo.jpeg` |
+| The school (photos received via WhatsApp on 2026-10-08) | `school-01.jpg` … `school-18.jpg` (gallery) |
+| The school — hero photo | `hero-school.jpg` |
+| School logo | `logo.jpeg` (favicon source) |
 
-Credits appear in the footer. **Confirm usage rights before going live** — the school's Facebook photo album could not be retrieved (blocked to automated access), so the gallery does not yet contain the school's own photos.
+The 19 school photographs arrived as one WhatsApp zip (`WhatsApp Image 2026-10-08 at 10.31.06.zip`); `hero-school.jpg` is the 13th image in filename order, the other 18 fill the gallery. Earlier partner/volunteer photos (HeyLocals, CIVS, volunteering.at, YouTube stills) were removed from `public/photos/` when these replaced them.
 
 ## Open items
 
 - Contact is WhatsApp (`+254 113 053 129` via the floating widget and footer) and Facebook — no email address published yet
 - Pupil numbers conflict across sources (290 in one CIVS listing, 350 elsewhere); the site says 350
 - `sitemap.js` hard-codes `lastModified: '2026-10-08'`; bump it when the page content changes
-- `public/photos` is ~5.4 MB; `sharp` is already installed if you want to downscale and recompress
+- `public/photos` is ~3.9 MB (19 school JPEGs at 1600px); `sharp` is installed if you want to downscale and recompress

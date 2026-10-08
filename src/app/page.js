@@ -3,14 +3,14 @@ import Image from 'next/image'
 const stats = [
   { value: '2019', label: 'Year founded' },
   { value: '350', label: 'Children enrolled' },
-  { value: 'P–6', label: 'Playgroup to Grade 6' },
+  { value: 'P–8', label: 'Playgroup to Grade 8' },
   { value: '13', label: 'Staff members' },
 ]
 
 const programs = [
   {
     title: 'Quality education',
-    body: 'The full curriculum from playgroup through Grade 6, taught by a dedicated team of ten teachers who know every child by name.',
+    body: 'The full curriculum from playgroup through Grade 8, taught by a dedicated team of ten teachers who know every child by name.',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M4 6h7a3 3 0 0 1 3 3v9a3 3 0 0 0-3-3H4z" />
@@ -53,16 +53,24 @@ const programs = [
 ]
 
 const gallery = [
-  { src: '/photos/heylocals-description_img.jpg', alt: 'Pupils at Better Tomorrow School' },
-  { src: '/photos/civs-better-tomorrow.jpg', alt: 'Children outside the school building' },
-  { src: '/photos/heylocals-weekend_img_4.jpg', alt: 'A day at Better Tomorrow School' },
-  { src: '/photos/youtube-headmaster-maxresdefault.jpg', alt: 'The headmaster speaking at assembly' },
-  { src: '/photos/heylocals-weekend_img_2.jpg', alt: 'Classroom life in Donholm' },
-  { src: '/photos/volunteering-at-Community-Kenia.jpg', alt: 'Volunteers with the school community' },
-  { src: '/photos/heylocals-why_participate_3_img.jpg', alt: 'Better Tomorrow School grounds' },
-  { src: '/photos/youtube-morning-devotion-maxresdefault.jpg', alt: 'Morning devotion at the school' },
-  { src: '/photos/heylocals-bulletpoints_media_poster.png', alt: 'The school and its neighbourhood' },
-  { src: '/photos/volunteering-at-Kinderprojekt-Kenia.jpg', alt: 'Younger pupils in class' },
+  { src: '/photos/school-01.jpg', alt: 'Better Tomorrow School, Nairobi — photo 1' },
+  { src: '/photos/school-02.jpg', alt: 'Better Tomorrow School, Nairobi — photo 2' },
+  { src: '/photos/school-03.jpg', alt: 'Better Tomorrow School, Nairobi — photo 3' },
+  { src: '/photos/school-04.jpg', alt: 'Better Tomorrow School, Nairobi — photo 4' },
+  { src: '/photos/school-05.jpg', alt: 'Better Tomorrow School, Nairobi — photo 5' },
+  { src: '/photos/school-06.jpg', alt: 'Better Tomorrow School, Nairobi — photo 6' },
+  { src: '/photos/school-07.jpg', alt: 'Better Tomorrow School, Nairobi — photo 7' },
+  { src: '/photos/school-08.jpg', alt: 'Better Tomorrow School, Nairobi — photo 8' },
+  { src: '/photos/school-09.jpg', alt: 'Better Tomorrow School, Nairobi — photo 9' },
+  { src: '/photos/school-10.jpg', alt: 'Better Tomorrow School, Nairobi — photo 10' },
+  { src: '/photos/school-11.jpg', alt: 'Better Tomorrow School, Nairobi — photo 11' },
+  { src: '/photos/school-12.jpg', alt: 'Better Tomorrow School, Nairobi — photo 12' },
+  { src: '/photos/school-13.jpg', alt: 'Better Tomorrow School, Nairobi — photo 13' },
+  { src: '/photos/school-14.jpg', alt: 'Better Tomorrow School, Nairobi — photo 14' },
+  { src: '/photos/school-15.jpg', alt: 'Better Tomorrow School, Nairobi — photo 15' },
+  { src: '/photos/school-16.jpg', alt: 'Better Tomorrow School, Nairobi — photo 16' },
+  { src: '/photos/school-17.jpg', alt: 'Better Tomorrow School, Nairobi — photo 17' },
+  { src: '/photos/school-18.jpg', alt: 'Better Tomorrow School, Nairobi — photo 18' },
 ]
 
 const involve = [
@@ -92,7 +100,7 @@ export default function Home() {
       <section className="hero">
         <div className="heroMedia">
           <Image
-            src="/photos/heylocals-background_hero.jpg"
+            src="/photos/hero-school.jpg"
             alt="Better Tomorrow School, Donholm, Nairobi"
             fill
             priority
@@ -104,7 +112,7 @@ export default function Home() {
           <h1>A better tomorrow starts in this classroom.</h1>
           <p className="heroLead">
             Better Tomorrow School is a community school in Vumilia Slum,
-            Embakasi East, giving around 350 children from playgroup to Grade 6
+            Embakasi East, giving around 350 children from playgroup to Grade 8
             a safe place to learn, eat and grow.
           </p>
           <div className="actions">
@@ -152,7 +160,7 @@ export default function Home() {
             </div>
             <figure className="figure" style={{ margin: 0 }}>
               <Image
-                src="/photos/civs-better-tomorrow.jpg"
+                src="/photos/school-01.jpg"
                 alt="Pupils of Better Tomorrow School"
                 fill
                 sizes="(max-width: 940px) 100vw, 40vw"
@@ -188,8 +196,7 @@ export default function Home() {
           <span className="eyebrow">Photos</span>
           <h2>Life at Better Tomorrow</h2>
           <p className="lead">
-            Photographs shared by our partners, volunteers and the school
-            community.
+            Photographs shared by the school and its community.
           </p>
           <div className="galleryGrid">
             {gallery.map((photo) => (

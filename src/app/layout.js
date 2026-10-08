@@ -12,7 +12,7 @@ export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'Better Tomorrow School — Donholm, Nairobi',
   description:
-    'A community school in Vumilia Slum, Donholm, Embakasi East, Nairobi. Founded in 2019, we teach around 350 children from playgroup to Grade 6.',
+    'A community school in Vumilia Slum, Donholm, Embakasi East, Nairobi. Founded in 2019, we teach around 350 children from playgroup to Grade 8.',
   keywords: [
     'Better Tomorrow School',
     'school in Donholm',
@@ -31,10 +31,10 @@ export const metadata = {
   openGraph: {
     title: 'Better Tomorrow School — Donholm, Nairobi',
     description:
-      'Founded in 2019 in Vumilia Slum, Donholm. Around 350 children, playgroup to Grade 6.',
+      'Founded in 2019 in Vumilia Slum, Donholm. Around 350 children, playgroup to Grade 8.',
     url: '/',
     siteName: 'Better Tomorrow School',
-    images: ['/photos/heylocals-background_hero.jpg'],
+    images: ['/photos/hero-school.jpg'],
     locale: 'en_KE',
     type: 'website',
   },
@@ -42,8 +42,8 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Better Tomorrow School — Donholm, Nairobi',
     description:
-      'Founded in 2019 in Vumilia Slum, Donholm. Around 350 children, playgroup to Grade 6.',
-    images: ['/photos/heylocals-background_hero.jpg'],
+      'Founded in 2019 in Vumilia Slum, Donholm. Around 350 children, playgroup to Grade 8.',
+    images: ['/photos/hero-school.jpg'],
   },
 }
 
@@ -55,7 +55,7 @@ const jsonLd = {
   logo: `${SITE_URL}/photos/logo.jpeg`,
   foundingDate: '2019',
   description:
-    'Community school in Vumilia Slum, Donholm, Embakasi East, Nairobi County, Kenya, serving children from playgroup to Grade 6.',
+    'Community school in Vumilia Slum, Donholm, Embakasi East, Nairobi County, Kenya, serving children from playgroup to Grade 8.',
   telephone: `+${WHATSAPP_NUMBER}`,
   address: {
     '@type': 'PostalAddress',
@@ -108,7 +108,7 @@ export default function RootLayout({ children }) {
                   Nairobi County, Kenya
                 </p>
                 <p>
-                  Founded 2019 · Playgroup to Grade 6
+                  Founded 2019 · Playgroup to Grade 8
                   <br />
                   A community school run by the community it serves.
                 </p>
@@ -153,7 +153,7 @@ export default function RootLayout({ children }) {
               <span>
                 © 2026 Better Tomorrow School. All rights reserved.
               </span>
-              <span>Photographs courtesy of our partners and volunteers.</span>
+              <span>Photographs courtesy of Better Tomorrow School.</span>
             </div>
           </div>
         </footer>
