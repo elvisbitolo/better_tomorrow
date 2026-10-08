@@ -247,7 +247,7 @@ p {
 
 .heroMedia img {
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
 }
 
 .hero::after {
