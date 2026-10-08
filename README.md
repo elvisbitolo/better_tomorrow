@@ -141,7 +141,7 @@ Credits appear in the footer. **Confirm usage rights before going live** — the
 
 ## Open items
 
-- Contact is WhatsApp (`+254 725 839 099` via the floating widget and footer) and Facebook — no email address published yet
+- Contact is WhatsApp (`+254 113 053 129` via the floating widget and footer) and Facebook — no email address published yet
 - Pupil numbers conflict across sources (290 in one CIVS listing, 350 elsewhere); the site says 350
 - `sitemap.js` hard-codes `lastModified: '2026-10-08'`; bump it when the page content changes
 - `public/photos` is ~5.4 MB; `sharp` is already installed if you want to downscale and recompress
