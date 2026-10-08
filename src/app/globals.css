@@ -12,6 +12,7 @@
   --shadow: 0 18px 40px -24px rgba(13, 59, 42, 0.55);
   --radius: 18px;
   --max: 1140px;
+  --gutter: 22px;
 }
 
 * {
@@ -20,7 +21,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 84px;
+  scroll-padding-top: 92px;
 }
 
 body {
@@ -32,6 +33,7 @@ body {
   font-size: 17px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 img {
@@ -50,14 +52,15 @@ h3 {
   letter-spacing: -0.02em;
   margin: 0 0 0.5em;
   font-weight: 800;
+  overflow-wrap: break-word;
 }
 
 h1 {
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-size: clamp(2.1rem, 5.5vw, 4.2rem);
 }
 
 h2 {
-  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-size: clamp(1.7rem, 3.6vw, 2.7rem);
 }
 
 h3 {
@@ -68,11 +71,23 @@ p {
   margin: 0 0 1em;
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .container {
   width: 100%;
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 22px;
+  padding: 0 var(--gutter);
 }
 
 .section {
@@ -106,7 +121,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 250, 241, 0.92);
+  background: rgba(255, 250, 241, 0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -115,8 +130,11 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
+  flex-wrap: wrap;
+  gap: 10px 18px;
   min-height: 74px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .brand {
@@ -125,12 +143,20 @@ p {
   gap: 12px;
   text-decoration: none;
   color: inherit;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.brandLogo {
+  border-radius: 12px;
+  flex: none;
 }
 
 .brandText {
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.2;
+  min-width: 0;
 }
 
 .brandText span {
@@ -154,7 +180,7 @@ p {
   color: var(--ink);
   font-size: 0.94rem;
   font-weight: 600;
-  padding: 8px 13px;
+  padding: 9px 13px;
   border-radius: 999px;
   transition: background 0.18s ease, color 0.18s ease;
 }
@@ -172,6 +198,30 @@ p {
 .nav .navCta:hover {
   background: var(--green-900);
   color: #fff;
+}
+
+.navToggle {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  cursor: pointer;
+  place-items: center;
+  gap: 5px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.navToggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--green-900);
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .hero {
@@ -197,6 +247,7 @@ p {
 
 .heroMedia img {
   object-fit: cover;
+  object-position: center;
 }
 
 .hero::after {
@@ -229,7 +280,7 @@ p {
 }
 
 .heroLead {
-  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  font-size: clamp(1.02rem, 2vw, 1.3rem);
   color: rgba(255, 255, 255, 0.92);
   max-width: 58ch;
 }
@@ -247,6 +298,7 @@ p {
   border-radius: 999px;
   font-weight: 700;
   font-size: 1rem;
+  text-align: center;
   text-decoration: none;
   transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
 }
@@ -288,7 +340,7 @@ p {
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -302,13 +354,13 @@ p {
 
 .stat {
   background: #fff;
-  padding: 26px 22px;
+  padding: 26px 16px;
   text-align: center;
 }
 
 .stat b {
   display: block;
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight: 800;
   color: var(--green-700);
   letter-spacing: -0.03em;
@@ -334,16 +386,12 @@ p {
   box-shadow: var(--shadow);
   aspect-ratio: 3 / 4;
   background: var(--sand);
-}
-
-.figure.wide {
-  aspect-ratio: 16 / 10;
+  margin: 0;
 }
 
 .figure img {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  object-position: center;
 }
 
 .figure figcaption {
@@ -351,15 +399,15 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 30px 18px 14px;
+  padding: 34px 16px 14px;
   font-size: 0.82rem;
   color: #fff;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
 }
 
 .cardGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 22px;
   margin-top: 38px;
 }
@@ -396,7 +444,7 @@ p {
 
 .involveGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
   margin-top: 38px;
 }
@@ -432,7 +480,7 @@ p {
 
 .galleryGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   margin-top: 34px;
 }
@@ -445,7 +493,6 @@ p {
 .galleryGrid .figure:first-child {
   grid-column: span 2;
   grid-row: span 2;
-  aspect-ratio: auto;
 }
 
 .galleryNote {
@@ -503,68 +550,214 @@ p {
   color: rgba(255, 255, 255, 0.6);
 }
 
-@media (max-width: 940px) {
-  .cardGrid,
+@media (max-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .galleryGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .involveGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .involveCard:last-child {
+    grid-column: span 2;
+  }
+
+  .split {
+    gap: 36px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+}
+
+@media (max-width: 860px) {
+  html {
+    scroll-padding-top: 78px;
+  }
+
+  .siteHeaderInner {
+    min-height: 66px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .navToggle {
+    display: flex;
+    flex: none;
+  }
+
+  .nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 8px 0 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav.navOpen {
+    display: flex;
+  }
+
+  .nav a {
+    font-size: 1rem;
+    padding: 13px 14px;
+    border-radius: 12px;
+  }
+
+  .nav .navCta {
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .navToggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navToggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navToggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .split,
-  .involveGrid,
   .footerGrid {
     grid-template-columns: 1fr;
   }
 
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
+  .split {
+    gap: 30px;
   }
 
   .figure {
     aspect-ratio: 4 / 3;
   }
+
+  .footerGrid {
+    gap: 30px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: -34px;
+  }
+
+  .heroInner {
+    padding: 90px 0 62px;
+  }
 }
 
 @media (max-width: 640px) {
+  :root {
+    --gutter: 18px;
+  }
+
   body {
     font-size: 16px;
   }
 
   .section {
-    padding: 54px 0;
+    padding: 50px 0;
   }
 
-  .siteHeaderInner {
+  .hero {
+    min-height: min(78vh, 640px);
+  }
+
+  .heroInner {
+    padding: 76px 0 52px;
+  }
+
+  .actions {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .actions .btn {
+    flex: 1 1 220px;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .involveGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .involveCard:last-child {
+    grid-column: auto;
+  }
+
+  .galleryGrid {
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .stat {
+    padding: 20px 10px;
+  }
+
+  .stat span {
+    font-size: 0.78rem;
+  }
+
+  .lead {
+    font-size: 1.05rem;
+  }
+
+  .siteFooter {
+    padding: 44px 0 28px;
+  }
+
+  .footerBottom {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 0;
-    gap: 8px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand {
+    flex-basis: 0;
   }
 
-  .nav {
-    width: 100%;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 4px;
+  .brandLogo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
   }
 
-  .nav a {
-    white-space: nowrap;
-    font-size: 0.88rem;
-    padding: 7px 11px;
+  .brandText {
+    font-size: 0.94rem;
   }
 
-  .cardGrid,
+  .brandText span {
+    font-size: 0.66rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
   .galleryGrid {
     grid-template-columns: 1fr;
   }
 
   .galleryGrid .figure:first-child {
-    grid-column: span 1;
-    grid-row: span 1;
-    aspect-ratio: 4 / 3;
-  }
-
-  .heroInner {
-    padding: 70px 0 54px;
+    grid-column: auto;
+    grid-row: auto;
   }
 }

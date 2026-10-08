@@ -1,5 +1,5 @@
 import './globals.css'
-import Image from 'next/image'
+import SiteNav from '../components/SiteNav'
 
 export const metadata = {
   title: 'Better Tomorrow School — Donholm, Nairobi',
@@ -52,34 +52,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <header className="siteHeader">
-          <div className="container siteHeaderInner">
-            <a className="brand" href="#top">
-              <Image
-                src="/photos/logo.jpeg"
-                alt="Better Tomorrow School logo"
-                width={46}
-                height={46}
-                priority
-                style={{ borderRadius: '12px' }}
-              />
-              <span className="brandText">
-                Better Tomorrow School
-                <span>Donholm · Nairobi</span>
-              </span>
-            </a>
-            <nav className="nav">
-              {links.map((link) => (
-                <a key={link.href} href={link.href}>
-                  {link.label}
-                </a>
-              ))}
-              <a className="navCta" href={facebookUrl}>
-                Support us
-              </a>
-            </nav>
-          </div>
-        </header>
+        <SiteNav links={links} cta={facebookUrl} />
 
         <main id="top">{children}</main>
 
