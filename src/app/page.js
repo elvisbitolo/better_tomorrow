@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import ContactForm from '../components/ContactForm'
 import Reveal from '../components/Reveal'
+import StatsMarquee from '../components/StatsMarquee'
 import { EMAIL, WHATSAPP_DISPLAY, whatsAppLink } from '../lib/site'
 
 const stats = [
@@ -193,16 +194,7 @@ export default function Home() {
 
       <section className="section" id="about">
         <div className="container">
-          <div className="statsMarquee" aria-label="School highlights">
-            <div className="statsTrack">
-              {[...stats, ...stats].map((stat, i) => (
-                <div className="statItem" key={`${stat.label}-${i}`} aria-hidden={i >= stats.length}>
-                  <b>{stat.value}</b>
-                  <span>{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <StatsMarquee stats={stats} />
 
           <div className="split" style={{ marginTop: '64px' }}>
             <Reveal direction="left">
