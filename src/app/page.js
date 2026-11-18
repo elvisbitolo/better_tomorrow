@@ -193,9 +193,9 @@ export default function Home() {
       </section>
 
       <section className="section" id="about">
-        <div className="container">
-          <StatsMarquee stats={stats} />
+        <StatsMarquee stats={stats} />
 
+        <div className="container">
           <div className="split" style={{ marginTop: '64px' }}>
             <Reveal direction="left">
               <span className="eyebrow">Who we are</span>
