@@ -6,6 +6,7 @@ export default function Reveal({
   as: Tag = 'div',
   className = '',
   delay = 0,
+  direction = 'up',
   children,
   ...props
 }) {
@@ -40,7 +41,7 @@ export default function Reveal({
   return (
     <Tag
       ref={ref}
-      className={`reveal ${className}`.trim()}
+      className={`reveal reveal-${direction} ${className}`.trim()}
       style={delay ? { '--reveal-delay': `${delay}ms` } : undefined}
       {...props}
     >

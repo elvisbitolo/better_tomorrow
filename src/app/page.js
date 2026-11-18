@@ -176,12 +176,16 @@ export default function Home() {
           <div className="actions">
             <a
               className="btn btnPrimary"
-              href="https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/"
+              href={whatsAppLink(
+                'Hello Better Tomorrow School! I would like to enrol my child.'
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Support the school
+              Enrol your child
             </a>
-            <a className="btn btnGhost" href="#gallery">
-              See photos
+            <a className="btn btnGhost" href="#contact">
+              Talk to us
             </a>
           </div>
         </div>
@@ -189,17 +193,19 @@ export default function Home() {
 
       <section className="section" id="about">
         <div className="container">
-          <div className="stats">
-            {stats.map((stat, i) => (
-              <Reveal as="div" className="stat" key={stat.label} delay={i * 80}>
-                <b>{stat.value}</b>
-                <span>{stat.label}</span>
-              </Reveal>
-            ))}
+          <div className="statsMarquee" aria-label="School highlights">
+            <div className="statsTrack">
+              {[...stats, ...stats].map((stat, i) => (
+                <div className="statItem" key={`${stat.label}-${i}`} aria-hidden={i >= stats.length}>
+                  <b>{stat.value}</b>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="split" style={{ marginTop: '64px' }}>
-            <Reveal>
+            <Reveal direction="left">
               <span className="eyebrow">Who we are</span>
               <h2>Rooted in the community it serves</h2>
               <p className="lead">
@@ -216,7 +222,7 @@ export default function Home() {
                 a meal, an hour of teaching — goes straight to the children.
               </p>
             </Reveal>
-            <Reveal as="figure" className="figure" style={{ margin: 0 }} delay={120}>
+            <Reveal as="figure" className="figure" style={{ margin: 0 }} direction="right" delay={120}>
               <Image
                 src="/photos/school-01.webp"
                 alt="Pupils of Better Tomorrow School"
@@ -231,7 +237,7 @@ export default function Home() {
 
       <section className="section sectionAlt" id="programs">
         <div className="container">
-          <Reveal>
+          <Reveal direction="left">
             <span className="eyebrow">What we do</span>
             <h2>Four things we do every day</h2>
             <p className="lead">
@@ -245,6 +251,7 @@ export default function Home() {
                 as="article"
                 className="card"
                 key={program.title}
+                direction={i % 2 === 0 ? 'left' : 'right'}
                 delay={i * 90}
               >
                 <div className="icon">{program.icon}</div>
@@ -258,7 +265,7 @@ export default function Home() {
 
       <section className="section" id="gallery">
         <div className="container">
-          <Reveal>
+          <Reveal direction="right">
             <span className="eyebrow">Photos</span>
             <h2>Life at Better Tomorrow</h2>
             <p className="lead">
@@ -272,6 +279,7 @@ export default function Home() {
                 className="figure"
                 key={photo.src}
                 style={{ margin: 0 }}
+                direction={i % 2 === 0 ? 'left' : 'right'}
                 delay={i * 40}
               >
                 <Image
@@ -283,7 +291,7 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          <Reveal>
+          <Reveal direction="left">
             <p className="galleryNote">
               More photos live on our{' '}
               <a href="https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/">
@@ -297,7 +305,7 @@ export default function Home() {
 
       <section className="section sectionAlt" id="admissions">
         <div className="container">
-          <Reveal>
+          <Reveal direction="left">
             <span className="eyebrow">Joining the school</span>
             <h2>How to enrol your child</h2>
             <p className="lead">
@@ -311,6 +319,7 @@ export default function Home() {
               <Reveal
                 className="step"
                 key={step.title}
+                direction={index % 2 === 0 ? 'right' : 'left'}
                 delay={index * 100}
               >
                 <span className="stepNum">{index + 1}</span>
@@ -321,7 +330,7 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          <Reveal delay={120}>
+          <Reveal direction="up" delay={120}>
             <div className="actions">
               <a
                 className="btn btnSolid"
@@ -347,7 +356,7 @@ export default function Home() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
           />
-          <Reveal>
+          <Reveal direction="right">
             <span className="eyebrow">Questions</span>
             <h2>What parents ask us</h2>
             <p className="lead">
@@ -357,7 +366,12 @@ export default function Home() {
           </Reveal>
           <div className="faqGrid">
             {faqs.map((faq, i) => (
-              <Reveal className="faqItem" key={faq.q} delay={i * 70}>
+              <Reveal
+                className="faqItem"
+                key={faq.q}
+                direction={i % 2 === 0 ? 'left' : 'right'}
+                delay={i * 70}
+              >
                 <h3>{faq.q}</h3>
                 <p>{faq.a}</p>
               </Reveal>
@@ -368,7 +382,7 @@ export default function Home() {
 
       <section className="section sectionAlt" id="involved">
         <div className="container">
-          <Reveal>
+          <Reveal direction="left">
             <span className="eyebrow">Get involved</span>
             <h2>How you can help</h2>
             <p className="lead">
@@ -382,6 +396,7 @@ export default function Home() {
                 as="article"
                 className="involveCard"
                 key={item.title}
+                direction={i % 2 === 0 ? 'left' : 'right'}
                 delay={i * 100}
               >
                 <h3>{item.title}</h3>
@@ -395,12 +410,12 @@ export default function Home() {
 
       <section className="section" id="contact">
         <div className="container">
-          <Reveal>
+          <Reveal direction="right">
             <span className="eyebrow">Contact</span>
             <h2>Talk to us</h2>
           </Reveal>
           <div className="split contactSplit">
-            <Reveal>
+            <Reveal direction="left">
               <p className="lead">
                 Questions about admissions, volunteering or supporting the
                 school? Reach us any way that suits you — we answer messages
@@ -441,7 +456,7 @@ export default function Home() {
                 </li>
               </ul>
             </Reveal>
-            <Reveal delay={120}>
+            <Reveal direction="right" delay={120}>
               <ContactForm />
             </Reveal>
           </div>
