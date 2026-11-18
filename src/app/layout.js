@@ -15,6 +15,10 @@ export const metadata = {
   title: 'Better Tomorrow School — Donholm, Nairobi',
   description:
     'A community school in Vumilia Slum, Donholm, Embakasi East, Nairobi. Founded in 2019, we teach around 350 children from playgroup to Grade 8.',
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    apple: '/apple-icon.png',
+  },
   keywords: [
     'Better Tomorrow School',
     'school in Donholm',
