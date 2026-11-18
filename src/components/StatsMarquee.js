@@ -64,8 +64,8 @@ export default function StatsMarquee({ stats }) {
   return (
     <div className="statsMarquee" aria-label="School highlights" ref={ref}>
       <div className="statsTrack">
-        {[...stats, ...stats].map((stat, i) => (
-          <div className="statItem" key={`${stat.label}-${i}`} aria-hidden={i >= stats.length}>
+        {stats.map((stat) => (
+          <div className="statItem" key={stat.label}>
             <b><AnimatedNumber value={stat.value} start={started} /></b>
             <span>{stat.label}</span>
           </div>
