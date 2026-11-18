@@ -1,6 +1,7 @@
 import './globals.css'
 import SiteNav from '../components/SiteNav'
 import WhatsAppWidget from '../components/WhatsAppWidget'
+import { Globe, Mail, MapPin, MessageCircle } from 'lucide-react'
 import {
   EMAIL,
   SITE_URL,
@@ -97,6 +98,20 @@ const links = [
 const facebookUrl =
   'https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/'
 
+function FacebookIcon({ size = 20 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.84c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94Z" />
+    </svg>
+  )
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -114,16 +129,45 @@ export default function RootLayout({ children }) {
             <div className="footerGrid">
               <div>
                 <h3>Better Tomorrow School</h3>
-                <p>
-                  Vumilia Slum, Donholm, Embakasi East
-                  <br />
-                  Nairobi County, Kenya
+                <p className="footerAddress">
+                  <MapPin size={18} aria-hidden="true" />
+                  <span>
+                    Vumilia Slum, Donholm, Embakasi East
+                    <br />
+                    Nairobi County, Kenya
+                  </span>
                 </p>
                 <p>
                   Founded 2019 · Playgroup to Grade 8
-                  <br />
-                  A community school run by the community it serves.
+                  <br />A community school run by the community it serves.
                 </p>
+                <div className="footerSocial">
+                  <a
+                    href={facebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="socialIcon"
+                  >
+                    <FacebookIcon size={20} />
+                  </a>
+                  <a
+                    href={whatsAppLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    className="socialIcon"
+                  >
+                    <MessageCircle size={20} aria-hidden="true" />
+                  </a>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    aria-label="Email"
+                    className="socialIcon"
+                  >
+                    <Mail size={20} aria-hidden="true" />
+                  </a>
+                </div>
               </div>
               <div>
                 <h3>Explore</h3>
@@ -137,34 +181,48 @@ export default function RootLayout({ children }) {
               </div>
               <div>
                 <h3>Reach us</h3>
-                <ul className="footerLinks">
+                <ul className="footerLinks footerContact">
                   <li>
                     <a
                       href={whatsAppLink()}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      WhatsApp {WHATSAPP_DISPLAY}
+                      <MessageCircle size={18} aria-hidden="true" />
+                      <span>WhatsApp {WHATSAPP_DISPLAY}</span>
                     </a>
                   </li>
                   <li>
-                    <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+                    <a href={`mailto:${EMAIL}`}>
+                      <Mail size={18} aria-hidden="true" />
+                      <span>{EMAIL}</span>
+                    </a>
                   </li>
                   <li>
-                    <a href={facebookUrl}>Facebook page</a>
+                    <a
+                      href={facebookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FacebookIcon size={18} />
+                      <span>Facebook page</span>
+                    </a>
                   </li>
                   <li>
-                    <a href="https://volunteering.at/">
-                      Volunteer via Grenzenlos
+                    <a
+                      href="https://volunteering.at/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Globe size={18} aria-hidden="true" />
+                      <span>Volunteer via Grenzenlos</span>
                     </a>
                   </li>
                 </ul>
               </div>
             </div>
             <div className="footerBottom">
-              <span>
-                © 2026 Better Tomorrow School. All rights reserved.
-              </span>
+              <span>© 2026 Better Tomorrow School. All rights reserved.</span>
               <span>Photographs courtesy of Better Tomorrow School.</span>
             </div>
           </div>

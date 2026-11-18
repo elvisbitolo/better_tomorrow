@@ -621,6 +621,53 @@ p {
   gap: 8px;
 }
 
+.footerAddress {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footerAddress svg {
+  flex: none;
+  margin-top: 4px;
+  color: var(--amber-300);
+}
+
+.footerSocial {
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.siteFooter .socialIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.siteFooter .socialIcon:hover {
+  background: var(--amber-500);
+  color: #231400;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.footerContact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footerContact a svg {
+  flex: none;
+}
+
 .footerBottom {
   border-top: 1px solid rgba(255, 255, 255, 0.16);
   margin-top: 40px;
