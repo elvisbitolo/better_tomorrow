@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import ContactForm from '../components/ContactForm'
+import Reveal from '../components/Reveal'
 import { EMAIL, WHATSAPP_DISPLAY, whatsAppLink } from '../lib/site'
 
 const stats = [
@@ -189,16 +190,16 @@ export default function Home() {
       <section className="section" id="about">
         <div className="container">
           <div className="stats">
-            {stats.map((stat) => (
-              <div className="stat" key={stat.label}>
+            {stats.map((stat, i) => (
+              <Reveal as="div" className="stat" key={stat.label} delay={i * 80}>
                 <b>{stat.value}</b>
                 <span>{stat.label}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
 
           <div className="split" style={{ marginTop: '64px' }}>
-            <div>
+            <Reveal>
               <span className="eyebrow">Who we are</span>
               <h2>Rooted in the community it serves</h2>
               <p className="lead">
@@ -214,8 +215,8 @@ export default function Home() {
                 classrooms through the year, and every contribution — books,
                 a meal, an hour of teaching — goes straight to the children.
               </p>
-            </div>
-            <figure className="figure" style={{ margin: 0 }}>
+            </Reveal>
+            <Reveal as="figure" className="figure" style={{ margin: 0 }} delay={120}>
               <Image
                 src="/photos/school-01.webp"
                 alt="Pupils of Better Tomorrow School"
@@ -223,26 +224,33 @@ export default function Home() {
                 sizes="(max-width: 940px) 100vw, 40vw"
               />
               <figcaption>Vumilia Slum, Donholm, Nairobi</figcaption>
-            </figure>
+            </Reveal>
           </div>
         </div>
       </section>
 
       <section className="section sectionAlt" id="programs">
         <div className="container">
-          <span className="eyebrow">What we do</span>
-          <h2>Four things we do every day</h2>
-          <p className="lead">
-            Teaching is only part of the job. A child learns best when they
-            are fed, heard and safe — so that is what we look after too.
-          </p>
+          <Reveal>
+            <span className="eyebrow">What we do</span>
+            <h2>Four things we do every day</h2>
+            <p className="lead">
+              Teaching is only part of the job. A child learns best when they
+              are fed, heard and safe — so that is what we look after too.
+            </p>
+          </Reveal>
           <div className="cardGrid">
-            {programs.map((program) => (
-              <article className="card" key={program.title}>
+            {programs.map((program, i) => (
+              <Reveal
+                as="article"
+                className="card"
+                key={program.title}
+                delay={i * 90}
+              >
                 <div className="icon">{program.icon}</div>
                 <h3>{program.title}</h3>
                 <p>{program.body}</p>
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -250,68 +258,86 @@ export default function Home() {
 
       <section className="section" id="gallery">
         <div className="container">
-          <span className="eyebrow">Photos</span>
-          <h2>Life at Better Tomorrow</h2>
-          <p className="lead">
-            Photographs shared by the school and its community.
-          </p>
+          <Reveal>
+            <span className="eyebrow">Photos</span>
+            <h2>Life at Better Tomorrow</h2>
+            <p className="lead">
+              Photographs shared by the school and its community.
+            </p>
+          </Reveal>
           <div className="galleryGrid">
-            {gallery.map((photo) => (
-              <figure className="figure" key={photo.src} style={{ margin: 0 }}>
+            {gallery.map((photo, i) => (
+              <Reveal
+                as="figure"
+                className="figure"
+                key={photo.src}
+                style={{ margin: 0 }}
+                delay={i * 40}
+              >
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 940px) 50vw, 25vw"
                 />
-              </figure>
+              </Reveal>
             ))}
           </div>
-          <p className="galleryNote">
-            More photos live on our{' '}
-            <a href="https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/">
-              Facebook page
-            </a>
-            .
-          </p>
+          <Reveal>
+            <p className="galleryNote">
+              More photos live on our{' '}
+              <a href="https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/">
+                Facebook page
+              </a>
+              .
+            </p>
+          </Reveal>
         </div>
       </section>
 
       <section className="section sectionAlt" id="admissions">
         <div className="container">
-          <span className="eyebrow">Joining the school</span>
-          <h2>How to enrol your child</h2>
-          <p className="lead">
-            Enrolment starts with a conversation. Grade placement and termly
-            contributions depend on your child’s age, so talk to us first and
-            we will walk you through everything step by step.
-          </p>
+          <Reveal>
+            <span className="eyebrow">Joining the school</span>
+            <h2>How to enrol your child</h2>
+            <p className="lead">
+              Enrolment starts with a conversation. Grade placement and termly
+              contributions depend on your child’s age, so talk to us first and
+              we will walk you through everything step by step.
+            </p>
+          </Reveal>
           <div className="steps">
             {admissionSteps.map((step, index) => (
-              <div className="step" key={step.title}>
+              <Reveal
+                className="step"
+                key={step.title}
+                delay={index * 100}
+              >
                 <span className="stepNum">{index + 1}</span>
                 <div>
                   <h3>{step.title}</h3>
                   <p>{step.body}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
-          <div className="actions">
-            <a
-              className="btn btnSolid"
-              href={whatsAppLink(
-                'Hello Better Tomorrow School! I would like to ask about admitting my child.'
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ask on WhatsApp
-            </a>
-            <a className="btn btnOutline" href="#contact">
-              Send a message
-            </a>
-          </div>
+          <Reveal delay={120}>
+            <div className="actions">
+              <a
+                className="btn btnSolid"
+                href={whatsAppLink(
+                  'Hello Better Tomorrow School! I would like to ask about admitting my child.'
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ask on WhatsApp
+              </a>
+              <a className="btn btnOutline" href="#contact">
+                Send a message
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -321,18 +347,20 @@ export default function Home() {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
           />
-          <span className="eyebrow">Questions</span>
-          <h2>What parents ask us</h2>
-          <p className="lead">
-            The short answers to what people ask most often — and anything
-            else, just message us.
-          </p>
+          <Reveal>
+            <span className="eyebrow">Questions</span>
+            <h2>What parents ask us</h2>
+            <p className="lead">
+              The short answers to what people ask most often — and anything
+              else, just message us.
+            </p>
+          </Reveal>
           <div className="faqGrid">
-            {faqs.map((faq) => (
-              <div className="faqItem" key={faq.q}>
+            {faqs.map((faq, i) => (
+              <Reveal className="faqItem" key={faq.q} delay={i * 70}>
                 <h3>{faq.q}</h3>
                 <p>{faq.a}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -340,29 +368,39 @@ export default function Home() {
 
       <section className="section sectionAlt" id="involved">
         <div className="container">
-          <span className="eyebrow">Get involved</span>
-          <h2>How you can help</h2>
-          <p className="lead">
-            The school is small, the need is real, and every form of help is
-            welcome — time, skills, materials or funding.
-          </p>
+          <Reveal>
+            <span className="eyebrow">Get involved</span>
+            <h2>How you can help</h2>
+            <p className="lead">
+              The school is small, the need is real, and every form of help is
+              welcome — time, skills, materials or funding.
+            </p>
+          </Reveal>
           <div className="involveGrid">
-            {involve.map((item) => (
-              <article className="involveCard" key={item.title}>
+            {involve.map((item, i) => (
+              <Reveal
+                as="article"
+                className="involveCard"
+                key={item.title}
+                delay={i * 100}
+              >
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
                 <a href={item.href}>{item.action} →</a>
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
+
       <section className="section" id="contact">
         <div className="container">
-          <span className="eyebrow">Contact</span>
-          <h2>Talk to us</h2>
+          <Reveal>
+            <span className="eyebrow">Contact</span>
+            <h2>Talk to us</h2>
+          </Reveal>
           <div className="split contactSplit">
-            <div>
+            <Reveal>
               <p className="lead">
                 Questions about admissions, volunteering or supporting the
                 school? Reach us any way that suits you — we answer messages
@@ -402,8 +440,10 @@ export default function Home() {
                   </a>
                 </li>
               </ul>
-            </div>
-            <ContactForm />
+            </Reveal>
+            <Reveal delay={120}>
+              <ContactForm />
+            </Reveal>
           </div>
         </div>
       </section>
