@@ -20,7 +20,7 @@ The school exists so that children in the settlement can learn in a safe place, 
 - **Guiding & counselling** — pastoral care and mentoring
 - **Community clean-ups** — clean-up and health drives across the neighbourhood
 
-Volunteer placements are arranged through its partner organisations: [CIVS Kenya](https://civskenya.org/), HeyLocals, [Grenzenlos / volunteering.at](https://volunteering.at/) and Associazione Joint. The school is on [Facebook](https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/).
+Volunteer placements are arranged through its partner organisations: HeyLocals, [Grenzenlos / volunteering.at](https://volunteering.at/) and Associazione Joint. The school is on [Facebook](https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/).
 
 ## The website
 
@@ -143,14 +143,14 @@ All images are in `public/photos/`:
 | The school — hero photo | `hero-school.webp` |
 | School logo | `logo.jpeg` (favicon source) |
 
-The 19 school photographs arrived as one WhatsApp zip (`WhatsApp Image 2026-10-08 at 10.31.06.zip`); `hero-school.webp` is the 13th image in filename order, the other 18 fill the gallery. Earlier partner/volunteer photos (HeyLocals, CIVS, volunteering.at, YouTube stills) were removed from `public/photos/` when these replaced them.
+The 19 school photographs arrived as one WhatsApp zip (`WhatsApp Image 2026-10-08 at 10.31.06.zip`); `hero-school.webp` is the 13th image in filename order, the other 18 fill the gallery. Earlier partner/volunteer photos (HeyLocals, Grenzenlos, volunteering.at, YouTube stills) were removed from `public/photos/` when these replaced them.
 
 Photos are re-encodable with `npm run images` (`scripts/compress-images.mjs`, needs `sharp`): converts `public/photos/*.jpg|png` to WebP at quality 78, caps gallery photos at a 1200px long edge (hero 1600px), and regenerates `og-cover.jpg` (1200×630, top-cropped) for social previews. That pass took the folder from 3.75 MB to ~2.0 MB. Keep `logo.jpeg` untouched — the app icons are generated from it. Social crawlers don't reliably render WebP, so Open Graph/Twitter previews always point at `og-cover.jpg`.
 
 ## Open items
 
 - Contact channels: email `bettertomorrowschool22@gmail.com`, WhatsApp (`+254 113 053 129`) and Facebook — no phone call line published
-- Pupil numbers conflict across sources (290 in one CIVS listing, 350 elsewhere); the site says 350
+- Pupil numbers conflict across sources (290 in one listing, 350 elsewhere); the site says 350
 - `sitemap.js` hard-codes `lastModified: '2026-10-08'`; bump it when the page content changes
 - `public/photos` is ~2.3 MB (19 WebP photos + `og-cover.jpg` + `logo.jpeg`); run `npm run images` after adding new JPEGs
 - Gallery alt text is generic ("photo 1…18") — needs someone who can see the photos to describe them

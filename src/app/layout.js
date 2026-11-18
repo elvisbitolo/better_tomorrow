@@ -154,9 +154,6 @@ export default function RootLayout({ children }) {
                     <a href={facebookUrl}>Facebook page</a>
                   </li>
                   <li>
-                    <a href="https://civskenya.org/">Volunteer via CIVS Kenya</a>
-                  </li>
-                  <li>
                     <a href="https://volunteering.at/">
                       Volunteer via Grenzenlos
                     </a>

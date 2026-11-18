@@ -79,8 +79,8 @@ const involve = [
   {
     title: 'Volunteer',
     body: 'Teach, play with the children and support the staff for one week or several months. Placements are arranged with our partner organisations.',
-    action: 'Volunteer with CIVS Kenya',
-    href: 'https://civskenya.org/',
+    action: 'Talk to us on Facebook',
+    href: 'https://www.facebook.com/people/Better-Tomorrow-School/100087755767222/',
   },
   {
     title: 'Partner with us',
