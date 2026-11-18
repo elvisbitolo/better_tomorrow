@@ -342,68 +342,37 @@ p {
 .statsMarquee {
   position: relative;
   z-index: 2;
+  width: 100vw;
   margin-top: -46px;
+  margin-left: calc(50% - 50vw);
   overflow: hidden;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0;
+  border: 0;
   box-shadow: 0 22px 44px -24px rgba(6, 30, 21, 0.65);
   background: linear-gradient(120deg, #08281c 0%, var(--green-900) 35%, var(--green-700) 70%, #1a6b47 100%);
 }
 
-.statsMarquee::before,
-.statsMarquee::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 56px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.statsMarquee::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(8, 40, 28, 0.95), transparent);
-}
-
-.statsMarquee::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(26, 107, 71, 0.95), transparent);
-}
-
 .statsTrack {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
-  width: max-content;
-  animation: statsScroll 28s linear infinite;
-}
-
-.statsMarquee:hover .statsTrack {
-  animation-play-state: paused;
+  width: min(100%, var(--max));
+  margin: 0 auto;
 }
 
 .statItem {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: 12px;
-  padding: 24px 34px;
-  white-space: nowrap;
+  min-width: 0;
+  padding: 24px 18px;
   color: #fff;
-  position: relative;
-}
-
-.statItem::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--amber-300);
-  margin-left: 34px;
-  flex: none;
-  opacity: 0.9;
+  text-align: center;
 }
 
 .statItem b {
+  flex: none;
   font-size: clamp(1.7rem, 3vw, 2.4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -418,12 +387,32 @@ p {
   letter-spacing: 0.01em;
 }
 
-@keyframes statsScroll {
-  from {
-    transform: translateX(0);
+@media (max-width: 860px) {
+  .statsMarquee {
+    margin-top: -34px;
   }
-  to {
-    transform: translateX(-50%);
+}
+
+@media (max-width: 640px) {
+  .statsTrack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .statItem {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 20px 10px;
+  }
+
+  .statItem b {
+    font-size: clamp(1.8rem, 7vw, 2.2rem);
+  }
+
+  .statItem span {
+    font-size: 0.82rem;
+    line-height: 1.35;
   }
 }
 
@@ -1334,19 +1323,4 @@ p {
     transition: none;
   }
 
-  .statsTrack {
-    animation: none;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .statsTrack .statItem[aria-hidden="true"] {
-    display: none;
-  }
-
-  .statsMarquee::before,
-  .statsMarquee::after {
-    display: none;
-  }
 }
