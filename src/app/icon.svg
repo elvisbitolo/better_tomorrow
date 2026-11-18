@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Better Tomorrow School</title>
+  <rect x="5" y="5" width="26" height="26" rx="3" fill="#e51b35"/>
+  <rect x="33" y="5" width="26" height="26" rx="3" fill="#10285a"/>
+  <rect x="5" y="33" width="26" height="26" rx="3" fill="#10285a"/>
+  <rect x="33" y="33" width="26" height="26" rx="3" fill="#e51b35"/>
+  <path d="M13 25V11h7.2c4.1 0 6.3 1.8 6.3 4.8 0 1.8-.9 3.1-2.5 3.8 2 .6 3.1 2 3.1 4.1 0 3.3-2.5 5.3-6.7 5.3H13zm4-8h3c1.6 0 2.4-.6 2.4-1.8s-.8-1.8-2.4-1.8h-3v3.6zm0 7.1h3.4c1.8 0 2.7-.6 2.7-1.9s-.9-1.9-2.7-1.9H17v3.8z" fill="#fff" transform="translate(0 -1)"/>
+  <path d="M46 10c-1.3 2.4-3.7 3.5-5.8 5.7-1.8 1.9-2.3 4.1-1.2 6.1 1 1.8 3.2 2.7 5.1 1.9-1.2 2.1-1 4.4.7 5.8 1.6-1.4 1.9-3.7.7-5.8 1.9.8 4.1-.1 5.1-1.9 1.1-2 .6-4.2-1.2-6.1C47.3 13.5 44.9 12.4 46 10z" fill="#43a66b"/>
+  <path d="M45.8 22.5h1.8v6.8h-1.8z" fill="#b88745"/>
+  <path d="M12 40h3.8v11.5h7.1v3.4H12V40z" fill="#fff"/>
+  <path d="M40 40h16v3.5h-6v11.4h-4V43.5h-6V40z" fill="#fff"/>
+</svg>
